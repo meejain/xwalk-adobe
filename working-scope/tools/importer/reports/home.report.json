@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://www.adobe.com/home",
+  "path": "home",
+  "timestamp": "2026-03-11T06:30:46.622Z",
+  "error": "page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.adobe.com/home\nCall log:\n  - navigating to \"https://www.adobe.com/home\", waiting until \"domcontentloaded\"\n",
+  "errorStack": "page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.adobe.com/home\nCall log:\n  - navigating to \"https://www.adobe.com/home\", waiting until \"domcontentloaded\"\n\n    at processUrl (/home/node/.claude/plugins/cache/excat-marketplace/excat/2.1.1/skills/excat-content-import/scripts/run-bulk-import.js:260:18)\n    at async main (/home/node/.claude/plugins/cache/excat-marketplace/excat/2.1.1/skills/excat-content-import/scripts/run-bulk-import.js:457:22)"
+}

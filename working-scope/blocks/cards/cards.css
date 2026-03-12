@@ -1,0 +1,319 @@
+.cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards > ul > li {
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards .cards-card-body {
+  padding: 24px;
+  order: -1;
+}
+
+.cards .cards-card-image {
+  line-height: 0;
+  order: 1;
+}
+
+.cards > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  min-height: 100px;
+}
+
+/* Hide image container if image failed to load */
+.cards > ul > li img[src=""],
+.cards > ul > li img:not([src]) {
+  display: none;
+}
+
+.cards .cards-card-body h2 {
+  font-size: var(--heading-font-size-m);
+  margin-top: 4px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.cards .cards-card-body h3 {
+  font-size: var(--heading-font-size-s);
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  color: #555;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Subtitle styling - first paragraph before h2 (e.g. "ADOBE ACROBAT") */
+.cards .cards-card-body > p:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1b1b1b;
+  margin-bottom: 0;
+}
+
+.cards .cards-card-body .button-wrapper {
+  margin-top: 12px;
+}
+
+/* Card buttons are outlined/secondary style */
+.cards .cards-card-body a.button {
+  font-size: var(--body-font-size-xs);
+  padding: 8px 20px;
+  background-color: transparent;
+  border-color: #1b1b1b;
+  color: #1b1b1b;
+}
+
+.cards .cards-card-body a.button:hover {
+  background-color: #1b1b1b;
+  border-color: #1b1b1b;
+  color: #fff;
+}
+
+/* "Read the story" and "Learn more" links */
+.cards .cards-card-body a:not(.button) {
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  color: var(--link-color);
+}
+
+/* Dark section cards get white background with constrained height */
+.dark .cards > ul > li {
+  background-color: #fff;
+  max-height: 500px;
+}
+
+.dark .cards > ul > li .cards-card-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.dark .cards > ul > li img {
+  aspect-ratio: unset;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dark .cards .cards-card-body p {
+  color: #555;
+}
+
+.dark .cards .cards-card-body > p:first-child {
+  color: #1b1b1b;
+}
+
+.dark .cards .cards-card-body h2 {
+  color: #1b1b1b;
+}
+
+/* Cards on dark sections have white backgrounds, so buttons should be outlined */
+.dark .cards .cards-card-body a.button.primary {
+  background-color: transparent;
+  border-color: #1b1b1b;
+  color: #1b1b1b;
+}
+
+.dark .cards .cards-card-body a.button.primary:hover {
+  background-color: #1b1b1b;
+  border-color: #1b1b1b;
+  color: #fff;
+}
+
+/* News-style cards - no images, list format */
+.cards > ul > li:not(:has(.cards-card-image)) {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.cards > ul > li:not(:has(.cards-card-image)) .cards-card-body {
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cards > ul > li:not(:has(.cards-card-image)):first-child .cards-card-body {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* 2 column grid on tablet+ */
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Dark hero section: unequal card widths ~67% / ~33% */
+  .dark .cards > ul {
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+  }
+
+  /* News-style: first item (heading) spans full width */
+  .cards > ul > li:not(:has(.cards-card-image)):first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    gap: 24px;
+  }
+
+  .cards .cards-card-body {
+    padding: 32px;
+  }
+
+  .cards .cards-card-body h2 {
+    font-size: var(--heading-font-size-l);
+  }
+
+  .cards > ul > li:not(:has(.cards-card-image)) .cards-card-body {
+    padding: 16px 0;
+  }
+}
+
+/* ============================================
+   Masonry section: cards + columns grid
+   ============================================ */
+
+/* Dark cards with white text */
+.cards-container.columns-container .cards > ul > li {
+  background-color: #000;
+  border-radius: 20px;
+}
+
+.cards-container.columns-container .cards > ul {
+  gap: 32px;
+  height: 100%;
+}
+
+.cards-container.columns-container .cards {
+  height: 100%;
+}
+
+.cards-container.columns-container .cards .cards-card-body h2,
+.cards-container.columns-container .cards .cards-card-body p {
+  color: #fff;
+}
+
+.cards-container.columns-container .cards .cards-card-body > p:first-child {
+  color: #fff;
+}
+
+.cards-container.columns-container .cards .cards-card-body a:not(.button) {
+  color: #fff;
+}
+
+/* Buttons styled as text links in masonry section */
+.cards-container.columns-container .cards .cards-card-body a.button {
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff;
+  padding: 0;
+  font-weight: 500;
+}
+
+.cards-container.columns-container .cards .cards-card-body a.button:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Image fills remaining space */
+.cards-container.columns-container .cards > ul > li .cards-card-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.cards-container.columns-container .cards > ul > li img {
+  aspect-ratio: unset;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* News wrapper (4th child): grey card with dark header */
+.cards-container.columns-container > :nth-child(4) {
+  background-color: #ededed;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cards-container.columns-container > :nth-child(4) .cards > ul {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* Override news-style transparent backgrounds */
+.cards-container.columns-container > :nth-child(4) .cards > ul > li,
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:has(.cards-card-image)) {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:has(.cards-card-image)) .cards-card-body {
+  border-bottom: 1px solid #ccc;
+  padding: 16px 32px;
+}
+
+/* First news item - dark header ("In the news") */
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:first-child {
+  background-color: #000;
+}
+
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:first-child .cards-card-body {
+  border-bottom: none;
+  padding: 24px 32px;
+}
+
+/* News items - dark text on grey background */
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:first-child) .cards-card-body h3,
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:first-child) .cards-card-body p {
+  color: #2c2c2c;
+}
+
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:first-child) .cards-card-body a {
+  color: #2c2c2c;
+}
+
+/* Last news item - no border */
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:last-child .cards-card-body {
+  border-bottom: none;
+}
+
+/* News heading stays white on black */
+.cards-container.columns-container > :nth-child(4) .cards > ul > li:first-child h2 {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+@media (width >= 600px) {
+  /* Override 2-col for news cards in masonry */
+  .cards-container.columns-container > :nth-child(4) .cards > ul {
+    grid-template-columns: 1fr;
+  }
+
+  /* News heading should not span columns */
+  .cards-container.columns-container > :nth-child(4) .cards > ul > li:not(:has(.cards-card-image)):first-child {
+    grid-column: auto;
+  }
+}

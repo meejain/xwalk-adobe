@@ -1,0 +1,104 @@
+.hero-container .hero-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero {
+  position: relative;
+  padding: 48px 24px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.hero h1 {
+  max-width: 800px;
+  margin-top: 0;
+  font-size: var(--heading-font-size-xxl);
+  color: #fff;
+  line-height: 1.15;
+}
+
+.hero p {
+  color: #fff;
+  max-width: 600px;
+}
+
+.hero .button-wrapper {
+  margin-top: 16px;
+}
+
+.hero a.button.primary {
+  background-color: rgb(59 99 251);
+  border-color: rgb(59 99 251);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 24px;
+  font-size: var(--body-font-size-s);
+  border-radius: 25px;
+}
+
+.hero a.button.primary:hover {
+  background-color: rgb(29 62 207);
+  border-color: rgb(29 62 207);
+  color: #fff;
+}
+
+main .section.dark .hero a.button.primary {
+  background-color: rgb(59 99 251);
+  border-color: rgb(59 99 251);
+  color: #fff;
+}
+
+main .section.dark .hero a.button.primary:hover {
+  background-color: rgb(29 62 207);
+  border-color: rgb(29 62 207);
+}
+
+/* Dark section: hero wallpaper extends behind cards */
+.dark .hero {
+  position: static;
+  padding: 64px 24px 32px;
+  min-height: unset;
+}
+
+@media (width >= 600px) {
+  .hero {
+    min-height: 300px;
+    padding: 64px 32px;
+  }
+
+  .dark .hero {
+    padding: 64px 32px 32px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero {
+    min-height: 300px;
+    padding: 80px 32px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .dark .hero {
+    padding: 80px 32px 40px;
+  }
+}

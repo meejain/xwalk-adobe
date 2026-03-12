@@ -1,0 +1,98 @@
+.columns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns > div > div {
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.columns h2 {
+  font-size: var(--heading-font-size-s);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.columns p {
+  margin: 4px 0;
+  font-size: var(--body-font-size-s);
+}
+
+.columns a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.columns a:hover {
+  text-decoration: underline;
+}
+
+.columns img {
+  width: 100%;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
+@media (width >= 900px) {
+  .columns > div {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .columns > div > div {
+    flex: 1;
+  }
+}
+
+/* Masonry section: columns as split dark/grey card */
+.cards-container.columns-container .columns {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.cards-container.columns-container .columns > div {
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+}
+
+/* Top section: Creative Cloud - dark background */
+.cards-container.columns-container .columns > div > div:first-child {
+  background-color: #000;
+  border-radius: 0;
+  padding: 24px 32px;
+}
+
+/* Bottom section: Acrobat/Explore - grey background */
+.cards-container.columns-container .columns > div > div:last-child {
+  background-color: #ededed;
+  border-radius: 0;
+  padding: 24px 32px;
+  flex: 1;
+}
+
+.cards-container.columns-container .columns > div > div:first-child h2 {
+  color: #fff;
+}
+
+.cards-container.columns-container .columns > div > div:first-child a:any-link {
+  color: #fff;
+}
+
+.cards-container.columns-container .columns > div > div:last-child h2 {
+  color: #2c2c2c;
+}
+
+.cards-container.columns-container .columns > div > div:last-child a:any-link {
+  color: #2c2c2c;
+}

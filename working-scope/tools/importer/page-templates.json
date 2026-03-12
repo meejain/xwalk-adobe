@@ -1,0 +1,57 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": ["https://www.adobe.com/home"],
+      "description": "Adobe homepage with hero, product showcases, and promotional content",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".homepage-brick.above-pods"]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            ".section.has-background .section.masonry .homepage-brick.two-thirds-grid",
+            ".section.has-background .section.masonry .homepage-brick.light.click:not(.two-thirds-grid)",
+            ".fragment[data-path*='acrobat'] .homepage-brick.dark",
+            ".fragment[data-path*='photoshop'] .homepage-brick.dark",
+            ".fragment[data-path*='amazing-apps'] .homepage-brick.dark",
+            ".fragment[data-path*='business'] .homepage-brick.dark",
+            ".homepage-brick.news"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [".homepage-brick.link.split-background"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1-hero",
+          "name": "Hero Section",
+          "selector": ".section.has-background",
+          "style": "dark",
+          "blocks": ["hero", "cards"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3-masonry-grid",
+          "name": "Product Showcase Masonry Grid",
+          "selector": ".section.masonry[daa-lh='s3']",
+          "style": "masonry",
+          "blocks": ["cards", "columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4-footnote",
+          "name": "Footnote Section",
+          "selector": ".section[daa-lh='s4']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [".text.long-form .foreground .body-s"]
+        }
+      ]
+    }
+  ]
+}
