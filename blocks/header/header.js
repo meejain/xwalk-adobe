@@ -298,6 +298,12 @@ export default async function decorate(block) {
         const pictureWrapper = brandPicture.closest('p');
         brandLink.prepend(brandPicture);
         if (pictureWrapper && !pictureWrapper.contains(brandLink)) pictureWrapper.remove();
+        // Remove bare text nodes to avoid duplicate "Adobe" next to the logo image
+        [...brandLink.childNodes].forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            node.remove();
+          }
+        });
       }
       // Fallback: add Adobe logo if no image at all
       if (!brandLink.querySelector('img') && !brandLink.querySelector('picture')) {
