@@ -366,7 +366,7 @@ function buildBottomBar(section) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const path = '/content/footer';
+  const path = '/footer';
   const fragment = await loadFragment(path);
 
   if (!fragment?.firstElementChild) {

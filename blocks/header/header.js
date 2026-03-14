@@ -265,7 +265,7 @@ function buildAppsLauncher() {
 /* ── main decorate ────────────────────────────────── */
 
 export default async function decorate(block) {
-  const path = '/content/nav';
+  const path = '/nav';
   const fragment = await loadFragment(path);
 
   if (!fragment?.firstElementChild) {
