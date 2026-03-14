@@ -271,7 +271,7 @@ function buildFeaturedProducts(section) {
   const strip = document.createElement('div');
   strip.className = 'footer-products';
 
-  const heading = section.querySelector('h2');
+  const heading = section.querySelector('h2, h5');
   if (heading) {
     const title = document.createElement('h5');
     title.className = 'footer-products-title';
@@ -281,29 +281,63 @@ function buildFeaturedProducts(section) {
 
   const list = document.createElement('div');
   list.className = 'footer-products-list';
-  section.querySelectorAll('li').forEach((li) => {
-    const a = li.querySelector('a');
-    if (!a) return;
-    const link = document.createElement('a');
-    link.href = a.href;
-    link.className = 'footer-product-item';
-    const img = a.querySelector('img');
-    if (img) {
-      const icon = document.createElement('img');
-      icon.src = img.src;
-      icon.alt = img.alt;
-      icon.width = 30;
-      icon.height = 30;
-      icon.className = 'footer-product-icon';
-      link.append(icon);
-    }
-    const name = document.createElement('span');
-    name.textContent = a.textContent.trim();
-    link.append(name);
-    list.append(link);
-  });
-  strip.append(list);
 
+  // Try list-based structure first (legacy: <ul><li><a><img>name</a></li></ul>)
+  const listItems = section.querySelectorAll('li');
+  if (listItems.length) {
+    listItems.forEach((li) => {
+      const a = li.querySelector('a');
+      if (!a) return;
+      const link = document.createElement('a');
+      link.href = a.href;
+      link.className = 'footer-product-item';
+      const img = a.querySelector('img');
+      if (img) {
+        const icon = document.createElement('img');
+        icon.src = img.src;
+        icon.alt = img.alt;
+        icon.width = 30;
+        icon.height = 30;
+        icon.className = 'footer-product-icon';
+        link.append(icon);
+      }
+      const name = document.createElement('span');
+      name.textContent = a.textContent.trim();
+      link.append(name);
+      list.append(link);
+    });
+  } else {
+    // Xwalk flat structure: alternating <p><picture> and <p><a> pairs
+    let currentPic = null;
+    section.querySelectorAll('p').forEach((p) => {
+      const pic = p.querySelector('picture');
+      const a = p.querySelector('a');
+      if (pic && !a) {
+        currentPic = pic;
+      } else if (a && currentPic) {
+        const link = document.createElement('a');
+        link.href = a.href;
+        link.className = 'footer-product-item';
+        const img = currentPic.querySelector('img');
+        if (img) {
+          const icon = document.createElement('img');
+          icon.src = img.src;
+          icon.alt = img.alt || '';
+          icon.width = 30;
+          icon.height = 30;
+          icon.className = 'footer-product-icon';
+          link.append(icon);
+        }
+        const name = document.createElement('span');
+        name.textContent = a.textContent.trim();
+        link.append(name);
+        list.append(link);
+        currentPic = null;
+      }
+    });
+  }
+
+  strip.append(list);
   return strip;
 }
 
