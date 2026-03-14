@@ -284,20 +284,60 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
-  // clean brand link
+  // Handle brand: combine separated picture + link (Xwalk Image + Button pattern)
   const navBrand = nav.querySelector('.nav-brand');
   if (navBrand) {
-    const brandLink = navBrand.querySelector('.button');
+    const brandPicture = navBrand.querySelector('picture');
+    const brandLink = navBrand.querySelector('.button') || navBrand.querySelector('a');
     if (brandLink) {
       brandLink.className = '';
       const bwrap = brandLink.closest('.button-container');
       if (bwrap) bwrap.className = '';
+      // Xwalk: picture and link are separate siblings — move picture into link
+      if (brandPicture && !brandLink.contains(brandPicture)) {
+        const pictureWrapper = brandPicture.closest('p');
+        brandLink.prepend(brandPicture);
+        if (pictureWrapper && !pictureWrapper.contains(brandLink)) pictureWrapper.remove();
+      }
+      // Fallback: add Adobe logo if no image at all
+      if (!brandLink.querySelector('img') && !brandLink.querySelector('picture')) {
+        const logo = document.createElement('img');
+        logo.src = '/icons/adobe-logo.svg';
+        logo.alt = 'Adobe';
+        logo.width = 65;
+        logo.height = 35;
+        brandLink.prepend(logo);
+      }
     }
   }
 
   // build mega menus
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
+    // Inject standalone promo images into mega menu promo columns (Xwalk pattern)
+    // In Xwalk, images are standalone Image components rendered as <p><picture> after the <ul>
+    const dcw = navSections.querySelector('.default-content-wrapper');
+    if (dcw) {
+      const standalonePics = [...dcw.querySelectorAll(':scope > p')].filter(
+        (p) => p.querySelector('picture') && !p.querySelector('a'),
+      );
+      if (standalonePics.length) {
+        const megaItems = [...dcw.querySelectorAll(':scope > ul > li')].filter(
+          (li) => li.querySelector(':scope > ul'),
+        );
+        megaItems.forEach((li, idx) => {
+          if (idx >= standalonePics.length) return;
+          const nestedUl = li.querySelector(':scope > ul');
+          const cols = nestedUl.querySelectorAll(':scope > li');
+          const promoCol = cols[cols.length - 1];
+          if (promoCol && !promoCol.querySelector(':scope > ul')) {
+            promoCol.prepend(standalonePics[idx].cloneNode(true));
+          }
+        });
+        standalonePics.forEach((p) => p.remove());
+      }
+    }
+
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((li) => {
       if (!li.querySelector('ul')) return;
       li.classList.add('nav-drop');
