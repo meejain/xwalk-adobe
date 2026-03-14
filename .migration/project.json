@@ -1,5 +1,10 @@
 {
   "type": "xwalk",
   "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
-  "contentHostUrl": "author-p184156-e1934423.adobeaemcloud.com"
+  "contentHostUrl": "author-p184156-e1934423.adobeaemcloud.com",
+  "baseUrl": "https://www.adobe.com",
+  "aemSitePath": "/content/Adobe-homepage-xwalk",
+  "aemAssetsFolderPath": "/content/dam/Adobe-homepage-xwalk",
+  "aemSiteName": "Adobe-homepage-xwalk",
+  "aemSiteTitle": "Adobe homepage xwalk"
 }
