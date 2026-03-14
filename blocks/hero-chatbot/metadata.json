@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-chatbot",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-03-12T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.adobe.com/home",
+    "originPage": "Adobe homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "chatbot-hero",
+    "imagePattern": "background"
+  },
+  "contentPattern": {
+    "structure": "heading + input + prompt cards + legal text",
+    "buttonCount": 4,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero sections with AI chatbot",
+      "interactive search/assistant interfaces",
+      "pages with prominent search or question input"
+    ],
+    "notSuitableFor": [
+      "simple text-only hero sections",
+      "product detail pages",
+      "blog post headers"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/home"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-12T00:00:00.000Z"
+  }
+}
