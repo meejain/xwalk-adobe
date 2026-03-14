@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "http://localhost:8789/home",
+  "path": "home",
+  "timestamp": "2026-03-13T06:04:45.614Z",
+  "title": "",
+  "template": "homepage",
+  "blocks": [
+    "hero",
+    "columns",
+    "cards",
+    "cards",
+    "cards",
+    "cards",
+    "cards",
+    "cards",
+    "cards"
+  ]
+}

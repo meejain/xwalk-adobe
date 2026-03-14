@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-promo",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-03-12T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.adobe.com/home",
+    "originPage": "Adobe homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "eyebrow + heading + body + CTA link",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "promotional product tiles with background images",
+      "homepage product grid sections",
+      "marketing campaign tiles with CTAs"
+    ],
+    "notSuitableFor": [
+      "text-only card lists",
+      "blog article cards with thumbnails",
+      "team member profiles"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/home"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-12T00:00:00.000Z"
+  }
+}
